@@ -28,8 +28,8 @@ export const registerUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
   'user/loginUser',
   async (user, thunkAPI) => {
-    console.log("user : ",user);
-    console.log("thunkAPI : ",thunkAPI);
+    // console.log("user : ",user);
+    // console.log("thunkAPI : ",thunkAPI);
     return loginUserThunk('/auth/login', user, thunkAPI);
   }
 );
@@ -81,13 +81,13 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.user = user;
         addUserToLocalStorage(user);
-        console.log("payload : ",payload);
+        // console.log("payload : ",payload);
 
         toast.success(`Welcome Back ${user.name}`);
       })
       .addCase(loginUser.rejected, (state, { payload }) => {
         state.isLoading = false;
-        console.log("payload : ",payload);
+        // console.log("payload : ",payload);
         toast.error(payload);
       })
       .addCase(updateUser.pending, (state) => {
